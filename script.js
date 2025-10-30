@@ -47,9 +47,9 @@ document.getElementById("add-card-btn").addEventListener("click", () => {
     flashcards.push({ term: term, definition: definition });
     document.getElementById("new-term").value = "";
     document.getElementById("new-definition").value = "";
-    alert("New card added!");
+    alert("New card added");
   } else {
-    alert("Please enter both a term and a definition!");
+    alert("Enter a term and a definition!");
   }
 });
 
