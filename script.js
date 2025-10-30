@@ -49,7 +49,7 @@ document.getElementById("add-card-btn").addEventListener("click", () => {
     document.getElementById("new-definition").value = "";
     alert("New card added");
   } else {
-    alert("Enter a term and a definition!");
+    alert("Enter a term and a definition");
   }
 });
 
