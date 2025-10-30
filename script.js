@@ -12,10 +12,46 @@ let showingTerm = true;
 
 // Start with this function to simply display the card
 function displayCard() {
-
+ const content= document.getElementById("card-content");
+ const current= flashcards[currentIndex];
+ if (showingTerm){
+    content.textContent=current.term;
+ } else {
+    content.textContent=current.definition;
+ }
 }
 
 // The rest of the code you will write is apart of event listeners
+document.getElementById("flashcard").addEventListener("click", () => {
+  showingTerm = !showingTerm;
+  displayCard();
+});
+
+document.getElementById("next-btn").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % flashcards.length;
+  showingTerm = true;
+  displayCard();
+});
+
+document.getElementById("prev-btn").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
+  showingTerm = true;
+  displayCard();
+});
+
+document.getElementById("add-card-btn").addEventListener("click", () => {
+  const term = document.getElementById("new-term").value.trim();
+  const definition = document.getElementById("new-definition").value.trim();
+
+  if (term && definition) {
+    flashcards.push({ term: term, definition: definition });
+    document.getElementById("new-term").value = "";
+    document.getElementById("new-definition").value = "";
+    alert("New card added!");
+  } else {
+    alert("Please enter both a term and a definition!");
+  }
+});
 
 // This line will display the card when the page is refreshed
 window.onload = displayCard;
